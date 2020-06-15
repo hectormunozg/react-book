@@ -6,10 +6,11 @@ class Practice2 extends React.Component {
       {
         id: 0,
         title: {
-          rendered: "Default Post"
-        }
-      }
-    ]
+          rendered: "Default Post",
+        },
+        link: "link",
+      },
+    ],
   };
   /* 
     1. Add the method componentDidMount()
@@ -18,13 +19,22 @@ class Practice2 extends React.Component {
     4. Take that and set it as the value of posts in state
     5  Add a catch to log out any errors
   */
+  componentDidMount() {
+    fetch("https://exitroomescape.com/wp-json/wp/v2/posts")
+      .then((response) => response.json())
+      .then(posts =>{
+        this.setState({posts:posts  });
+      })
+      .catch(error => console.error(error));
+  }
+
   render() {
     return (
       <header>
         <h1>Posts</h1>
         <ul>
-          {this.state.posts.map(post => (
-            <li key={post.id}>{post.title.rendered}</li>
+          {this.state.posts.map((post) => (
+            <li key={post.id}><a href={post.link}>{post.title.rendered}</a></li>
           ))}
         </ul>
       </header>

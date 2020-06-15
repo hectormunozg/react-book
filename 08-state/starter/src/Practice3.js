@@ -4,20 +4,26 @@ import React from "react";
   1. Setup UserForm to accept props
   2. Display the proper values from props where needed
 */
-const UserForm = () => (
+const UserForm = (props) => (
   <p>
-    <label htmlFor="PROPS_ID">PROPS_LABEL</label>:
-    <input id="PROPS_ID" type="text" onChange="PROPS_ONCHANGE" />
+    <label htmlFor={props.label}>{props.label}</label>:
+    <input id={props.id} type="text" onChange={props.onChange} />
   </p>
 );
+
+const Header = props => (
+  <h2>
+    {props.first} {props.last}
+  </h2>
+)
 
 class Practice3 extends React.Component {
   state = {
     first: "First",
-    last: "Last"
+    last: "Last",
   };
 
-  handleFirst = e => {
+  handleFirst = (e) => {
     this.setState({ first: e.target.value });
   };
 
@@ -26,12 +32,14 @@ class Practice3 extends React.Component {
     4. Have the function update last in state to e.target.value
   */
 
+  handleLast = (e) => {
+    this.setState({ last: e.target.value });
+  };
+
   render() {
     return (
       <>
-        <h2>
-          {this.state.first} {this.state.last}
-        </h2>
+        <Header first={this.state.first} last={this.state.last} />
         {/*
           3. Call <UserForm /> and pass in the following prop values
               id = "firstName"
@@ -42,6 +50,12 @@ class Practice3 extends React.Component {
               label = "Last Name"
               onChange = handleLast              
         */}
+        <UserForm
+          id="firstName"
+          label="First Name"
+          onChange={this.handleFirst}
+        />
+        <UserForm id="lastName" label="Last Name" onChange={this.handleLast} />
       </>
     );
   }

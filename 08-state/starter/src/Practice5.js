@@ -5,14 +5,15 @@ import React from "react";
   3. Start Create React App back up again with `npm start`
   4. Import SimpleStorage from "react-simple-storage"
 */
+import SimpleStorage from "react-simple-storage";
 
-const Header = props => <h2>{props.text}</h2>;
+const Header = (props) => <h2>{props.text}</h2>;
 
-const Button = props => <button onClick={props.onClick}>{props.text}</button>;
+const Button = (props) => <button onClick={props.onClick}>{props.text}</button>;
 
 class Practice5 extends React.Component {
   state = {
-    count: 0
+    count: 0,
   };
 
   increment = () => {
@@ -33,6 +34,7 @@ class Practice5 extends React.Component {
         {/*
           5. Call <SimpleStorage parent={this} />
         */}
+        <SimpleStorage parent={this} />
         <Header text={this.state.count} />
         <Button onClick={this.decrement} text="-" />
         <Button onClick={this.increment} text="+" />

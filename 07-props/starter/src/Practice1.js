@@ -8,12 +8,12 @@ const Practice1 = () => {
       {/* 
         1.Pass the id and username into <User /> as props 
       */}
-      <User />
+      <User id={id} username={username} />
     </div>
   );
 };
 
-const User = props => {
+const User = (props) => {
   return (
     <p>
       {props.username} [{props.id}]

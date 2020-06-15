@@ -15,6 +15,16 @@ class Practice4 extends React.Component {
     5. If that passes, then log out "State Changed!"
   */
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log("<Practice 4/>");
+    console.log("Prev State: ", prevState.points);
+    console.log("New State: ", this.state.points);
+
+    if(prevState.points !== this.state.points) {
+      console.log("State Changed!");
+    }
+  }
+
   addPoint = () => {
     this.setState({ points: this.state.points + 1 });
   };
@@ -55,6 +65,17 @@ class BarChart extends React.Component {
        prevProps.points !== this.props.points
     10. If that passes, then log out "Props Changed!"
   */
+
+  componentDidUpdate(prevProps, prevState){
+    console.log("<Barchart/>");
+    console.log("Prev props: ", prevProps.points);
+    console.log("Prev props: ", this.props.points);
+
+    if(prevProps.points !== this.props.points) {
+      console.log("Props changed!");
+    }
+
+  };
 
   render() {
     const barStyles = {

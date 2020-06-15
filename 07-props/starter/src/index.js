@@ -5,12 +5,12 @@ import ReactDOM from "react-dom";
 // import Practice2 from "./Practice2";
 // import Practice3 from "./Practice3";
 // import Practice4 from "./Practice4";
-// import Practice5 from "./Practice5";
+import Practice5 from "./Practice5";
 
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  "Call Practice Component Here",
+  <Practice5 />,
   document.getElementById("root")
 );
 
